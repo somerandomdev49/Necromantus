@@ -6,12 +6,15 @@ Necromantus is a simple scriptiong language for java.
 
 Simple java API and syntax.
 ```java
-...
-// not full code, but api usage is here:
-walker.put("result", null); // creates variable in walker's scope.
-walker.putNativeFunc("write", (ArrayList<Object> args) -> {for(Object arg:args)System.out.print(arg);System.out.println();return null;}); // creates function that erites stuff to console.
-walker.putNativeFunc("read", (ArrayList<Object>) -> new Scanner(System.in).nextLine()); // creates function that reads from console and returns read line.
-...
+Tokenizer t = new Tokenizer(contents);
+parser = new Parser(t);
+Node src = parser.parseSource();
+Scope scope = new Scope(null);
+Walker walker = new Walker(scope);
+walker.putNativeFunc(new NMNativeFunc("write",  (ArrayList<Object> args) -> {for(Object arg : args)System.out.print(arg);System.out.println();return null;}));
+walker.putNativeFunc(new NMNativeFunc("read",   (ArrayList<Object> args) -> new Scanner(System.in).nextLine()));
+for (Node statement : ((RootNode) src).children)
+    walker.walk(statement);
 ```
 
 ```necromantus
