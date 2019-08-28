@@ -1,7 +1,4 @@
 # Necromantus
-I will commit here, no worries! (it actually exists)
-
-
 Necromantus is a simple scriptiong language for java.
 
 Simple java API and syntax.
