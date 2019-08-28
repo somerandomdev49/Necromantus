@@ -13,6 +13,7 @@ walker.putNativeFunc(new NMNativeFunc("read",   (ArrayList<Object> args) -> new 
 for (Node statement : ((RootNode) src).children)
     walker.walk(statement);
 ```
+Note: this can be found in Runtime.java file.
 
 ```necromantus
 _ = call write("Hello, World!");
