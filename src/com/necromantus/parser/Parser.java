@@ -41,8 +41,10 @@ public final class Parser {
             return new Node(NodeType.VALUE, NodeType.ValueNodeType.VAR, tok.value);
         } else if (tok.id == 1) {
             return new Node(NodeType.VALUE, NodeType.ValueNodeType.NUMBER, tok.value);
+        } else if (tok.id == TokenIdManager.getIdByDesc("STRING")) {
+            return new Node(NodeType.VALUE, NodeType.ValueNodeType.STRING, tok.value.substring(1, tok.value.length() - 1));
         } else
-            throw new ParserException("Expected number or name");
+            throw new ParserException("Expected number, string or name");
     }
 
     private Node parseVar() throws ParserException {
@@ -72,10 +74,21 @@ public final class Parser {
         return n;
     }
 
+
+
+
+    //<--------------------- FLOW CONTROL --------------------->//
+
     private Node parseIf() throws ParserException {
         Node expression = parseExpr();
         BlockNode block = parseBlock();
         return new Node(NodeType.IF, null, "IF", expression, block);
+    }
+
+    private Node parseLoop() throws ParserException {
+        Node expression = parseExpr();
+        BlockNode block = parseBlock();
+        return new Node(NodeType.LOOP, null, "LOOP", expression, block);
     }
 
 
@@ -201,7 +214,7 @@ public final class Parser {
         Node n;
         n = parseLogical();
         Token operatorToken = tokenizer.seekToken();
-        while (operatorToken.id == TokenIdManager.getIdByDesc("==") || operatorToken.id == TokenIdManager.getIdByDesc("!=")) {
+        while (operatorToken.id == 0 && operatorToken.value.equals("is") || operatorToken.id == 0 && operatorToken.value.equals("not")) {
             tokenizer.nextToken(); // skip * or /
             n = new Node(NodeType.ACTION, NodeType.ActionNodeType.OPERATOR, operatorToken.value, n, parseLogical());
             operatorToken = tokenizer.seekToken();
@@ -305,13 +318,18 @@ public final class Parser {
         } else if (kwQM.id == 0 && kwQM.value.equals("call")) {
             tokenizer.nextToken();
             return parseFuncCall();
+        } else if (kwQM.id == 0 && kwQM.value.equals("if")) {
+            tokenizer.nextToken();
+            return parseIf();
+        } else if (kwQM.id == 0 && kwQM.value.equals("loop")) {
+            tokenizer.nextToken();
+            return parseLoop();
         } else {
             if (kwQM.id != TokenIdManager.getIdByDesc("STRING")) {
                 Node expr = parseAdd();
                 return new Node(NodeType.EXPRESSION, null, "EXPRESSION", expr, null);
             } else {
                 tokenizer.nextToken();
-                System.out.println("STRING: " + kwQM);
                 return new Node(NodeType.EXPRESSION, null, "EXPRESSION", new Node(NodeType.VALUE, NodeType.ValueNodeType.STRING, kwQM.value.substring(1, kwQM.value.length() - 1)), null);
             }
         }
@@ -325,3 +343,5 @@ public final class Parser {
         return n;
     }
 }
+
+// 345

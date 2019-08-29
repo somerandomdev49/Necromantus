@@ -2,6 +2,9 @@ package com.necromantus.lang;
 
 import java.util.ArrayList;
 
+/**
+ * Represents function that is provided by Necromantus executor.
+ */
 public class NMNativeFunc extends NMFunction {
 
     private NativeFunction func;
@@ -12,7 +15,7 @@ public class NMNativeFunc extends NMFunction {
     }
 
     public Object call(ArrayList<Object> args, int argSize) {
-        Object forDebuggingToSeeResultOfFunctionExecution = func.call(args);
+        Object forDebuggingToSeeResultOfFunctionExecution = func.call(args); // :D haha
         return forDebuggingToSeeResultOfFunctionExecution;
     }
 

@@ -6,6 +6,9 @@ import com.necromantus.runtime.Walker;
 
 import java.util.ArrayList;
 
+/**
+ * Represents Necromantus Function.
+ */
 public class NMFunc extends NMFunction {
     private Block block;
     public ArrayList<String> args;

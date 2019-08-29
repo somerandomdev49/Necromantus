@@ -65,18 +65,34 @@ public class Scope {
         throw new NoSuchElementException("NO VAR check before doing this things scope is unchecked " + name + ".");
     }
 
+
+    private class IndexOfReturn {
+        public int index;
+        public boolean parentScope;
+        public boolean error;
+
+        public IndexOfReturn(int index, boolean parentScope, boolean error) {
+            this.index = index;
+            this.parentScope = parentScope;
+            this.error = error;
+        }
+    }
     /**
      * gets index of variable with name.
      *
      * @param name name of variable.
      * @return index.
      */
-    private int indexOfVar(String name) {
+    private IndexOfReturn indexOfVar(String name) {
         for (NMVariable var : vars) {
-            if (var.name.equals(name)) return vars.indexOf(var);
+            if (var.name.equals(name)) return new IndexOfReturn(vars.indexOf(var), false, false);
         }
-        if (parentScope != null && parentScope.containsVar(name)) return parentScope.indexOfVar(name);
-        return -1;
+        if (parentScope != null && parentScope.containsVar(name)) {
+            IndexOfReturn i = parentScope.indexOfVar(name);
+            i.parentScope = true;
+            return i;
+        }
+        return new IndexOfReturn(-1, false, true);
     }
 
     /**
@@ -86,12 +102,16 @@ public class Scope {
      * @param name  name of variable to set.
      * @param value value of variable to set.
      */
-    public void setVar(String name, Object value) {
-        NMVariable v = vars.get(indexOfVar(name));
-        if (!v.name.equals("_")) { // may have used just name but who cares?.
-            v.setValue(value);
-            vars.set(indexOfVar(name), v);
-        }
+    public void setVar(String name, Object value) throws Exception {
+        IndexOfReturn i = indexOfVar(name);
+        if(i.error) throw new Exception("INTERNAL: Scope.indexOfVar returned error.");
+        if(!i.parentScope) {
+            NMVariable v = vars.get(i.index);
+            if (!v.name.equals("_")) { // may have used just name but who cares?.
+                v.setValue(value);
+                vars.set(i.index, v);
+            }
+        } else parentScope.setVar(name, value);
     }
 
     public boolean containsFunc(String name) {
@@ -110,13 +130,13 @@ public class Scope {
         throw new NoSuchElementException("No FUNC, check before doing this things; scope is unchecked " + name + ".");
     }
 
-    private int indexOfFunc(String name) {
-        for (NMFunction func : funcs) {
-            if (func.name.equals(name)) return funcs.indexOf(func);
-        }
-        if (parentScope != null && parentScope.containsFunc(name)) return parentScope.indexOfFunc(name);
-        return -1;
-    }
+//    private int indexOfFunc(String name) {
+//        for (NMFunction func : funcs) {
+//            if (func.name.equals(name)) return funcs.indexOf(func);
+//        }
+//        if (parentScope != null && parentScope.containsFunc(name)) return parentScope.indexOfFunc(name);
+//        return -1;
+//    }
 
 //    public void setFunc(String name, Object value) {
 //        NMFunction v = funcs.get(indexOfFunc(name));

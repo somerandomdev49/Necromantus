@@ -4,7 +4,7 @@ public enum NodeType {
     ACTION,
     VALUE,
     ROOT,
-    EXPRESSION, STATEMENT, ARG_LIST, FUNC, ARG_CALL_LIST, BLOCK, IF;
+    EXPRESSION, STATEMENT, ARG_LIST, FUNC, ARG_CALL_LIST, BLOCK, IF, LOOP;
 
     public enum ValueNodeType {
         NUMBER,

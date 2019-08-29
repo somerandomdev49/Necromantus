@@ -33,7 +33,7 @@ public class Tokenizer {
         Token t = seekToken();
         str = str.replaceFirst(Pattern.quote(t.value), "");
         tokenEatingHistory.add(str);
-        //System.out.println(str);
+        System.out.println(str);
         return t;
     }
 
