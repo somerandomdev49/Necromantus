@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Collections;
 
 class Main {
@@ -39,8 +40,12 @@ class Main {
     }
 
     public static void main(String[] args) {
+        if(args.length == 0) {
+            System.err.println("Usage: necromantus <path>");
+            System.exit(-1);
+        }
         try {
-            byte[] content = Files.readAllBytes(Paths.get("C:\\Users\\MIK\\Desktop\\necromantus.nus"));
+            byte[] content = Files.readAllBytes(Paths.get(args[0]));
             Instant start = Instant.now();
             try {
                 new Runtime(new String(content)).run();

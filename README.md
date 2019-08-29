@@ -21,11 +21,13 @@ let name = call read();
 _ = call write("Hello, ", name);
 
 let sum = func (x, y) {
-
+    out = x + y;
 };
 
-let r = call sum(2, 2)
+let r = call sum(2, 2);
 _ = call write("sum of two plus two and two plus two is: ", 2 + 2 + (call sum(2, 2));
 ```
+
+if some unexpected behaviour appears, make an issue. (PLEASE!!!)
 
 `:D`

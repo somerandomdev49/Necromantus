@@ -6,8 +6,8 @@ public class ParserException extends Exception {
     public ParserException(String msg) {
         super(
                 msg +
-                        " at " +
-                        Parser.tokenizer.firstCharIndex +
+                        " somewhere " +
+                        //Parser.tokenizer.firstCharIndex +
                         " ..." +
 //                        Parser.tokenizer.tokenEatingHistory.get(Parser.tokenizer.tokenEatingHistory.size()-1).substring(
 //                                bound(0, Parser.tokenizer.actualStr.length(), Parser.tokenizer.firstCharIndex - 5),
