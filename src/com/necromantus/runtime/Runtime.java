@@ -63,12 +63,16 @@ public class Runtime {
 
         Scope scope = new Scope(null);
         Walker walker = new Walker(scope);
+
         walker.putNativeFunc(new NMNativeFunc("write",  (ArrayList<Object> args) -> {for(Object arg:args){System.out.print(arg);}System.out.print("\n");return null;}));
+
         walker.putNativeFunc(new NMNativeFunc("read",   (ArrayList<Object> args) -> new Scanner(System.in).nextLine()));
+
         for (Node statement : ((RootNode) src).children)
             walker.walk(statement);
         //ArrayList<Object> args = new ArrayList<>();
         //System.out.println("Staring to execute");
+        //walker.getFunc("main").call(args, 0);
         //walker.getFunc("main").call(args, 0);
         //System.out.println("Result: " + walker.get("result").getValue());
     }

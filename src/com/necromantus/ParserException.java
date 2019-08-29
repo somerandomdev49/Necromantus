@@ -14,12 +14,12 @@ public class ParserException extends Exception {
 //                                bound(0, Parser.tokenizer.actualStr.length(), Parser.tokenizer.firstCharIndex)
 //                        ) +
                         " >>" +
-                        Parser.tokenizer.tokenEatingHistory.get(Parser.tokenizer.tokenEatingHistory.size()-1).charAt(0) +
+                        //(Parser.tokenizer.tokenEatingHistory.size()!=0?Parser.tokenizer.tokenEatingHistory.get(Parser.tokenizer.tokenEatingHistory.size()-1).charAt(0):"")+
                         "<<" +
-                        (Parser.tokenizer.tokenEatingHistory.get(Parser.tokenizer.tokenEatingHistory.size()-1)+"END").substring(
-                                1,
-                                bound(1, 6, Parser.tokenizer.tokenEatingHistory.get(Parser.tokenizer.tokenEatingHistory.size()-1).length())
-                        ) +
+//                        (Parser.tokenizer.tokenEatingHistory.get(Parser.tokenizer.tokenEatingHistory.size()-1)+"END").substring(
+//                                1,
+//                                bound(1, 6, Parser.tokenizer.tokenEatingHistory.get(Parser.tokenizer.tokenEatingHistory.size()-1).length())
+//                        ) +
 //                        Parser.tokenizer.tokenEatingHistory.get(Parser.tokenizer.tokenEatingHistory.size()-1).substring(
 //                                bound(0, Parser.tokenizer.actualStr.length(), Parser.tokenizer.firstCharIndex + 1),
 //                                bound(0, Parser.tokenizer.actualStr.length(), Parser.tokenizer.firstCharIndex + 6)

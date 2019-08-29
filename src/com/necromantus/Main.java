@@ -46,6 +46,7 @@ class Main {
                 new Runtime(new String(content)).run();
             } catch (ParserException e) {
                 System.err.println(e.getMessage());
+                e.printStackTrace();
             } finally {
                 Instant done = Instant.now();
                 Duration time = Duration.between(start, done);

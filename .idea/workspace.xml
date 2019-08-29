@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e2600331-d7ae-4228-a520-fc15ccb0b824" name="Default Changelist" comment="" />
+    <list default="true" id="e2600331-d7ae-4228-a520-fc15ccb0b824" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/ParserException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/lang/NMFunc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/lang/NMFunction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/lang/NMNativeFunc$NativeFunction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/lang/NMNativeFunc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/lang/NMVariable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/lang/Named.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/lang/Scope.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/parser/BlockNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/parser/ListNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/parser/Node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/parser/NodeType$ActionNodeType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/parser/NodeType$StatementNodeType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/parser/NodeType$ValueNodeType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/parser/NodeType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/parser/Parser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/parser/RootNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/runtime/Runtime.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/runtime/Walker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/token/Token.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/token/TokenIdManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/token/TokenInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/tokenizer/Tokenizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Necromantus/com/cln3/util/debug/Debugger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/necromantus/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/necromantus/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/necromantus/ParserException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/necromantus/ParserException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/necromantus/lang/NMFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/necromantus/lang/NMFunc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/necromantus/runtime/Runtime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/necromantus/runtime/Runtime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/necromantus/runtime/Walker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/necromantus/runtime/Walker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/necromantus/tokenizer/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/necromantus/tokenizer/Tokenizer.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -57,11 +91,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Runtime.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Runtime.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/necromantus/runtime/Runtime.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1632">
-              <caret line="68" column="35" lean-forward="true" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
+            <state relative-caret-position="496">
+              <caret line="64" column="42" lean-forward="true" selection-start-line="64" selection-start-column="42" selection-end-line="64" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -75,20 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NMFunction.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/necromantus/lang/NMFunction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ParserException.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/necromantus/ParserException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+            <state relative-caret-position="341">
+              <caret line="11" column="96" selection-start-line="11" selection-start-column="96" selection-end-line="11" selection-end-column="96" />
             </state>
           </provider>
         </entry>
@@ -96,26 +121,29 @@
       <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/necromantus/parser/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9517">
-              <caret line="312" column="38" selection-start-line="312" selection-start-column="38" selection-end-line="312" selection-end-column="38" />
+            <state relative-caret-position="4805">
+              <caret line="160" selection-start-line="160" selection-end-line="160" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Token.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/necromantus/token/Token.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Walker.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Walker.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/necromantus/runtime/Walker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="31">
-              <caret line="73" column="58" selection-start-line="73" selection-start-column="58" selection-end-line="73" selection-end-column="58" />
+            <state relative-caret-position="341">
+              <caret line="76" column="24" lean-forward="true" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tokenizer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/necromantus/tokenizer/Tokenizer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="837">
+              <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -123,8 +151,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/necromantus/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="930">
-              <caret line="43" column="42" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
+            <state relative-caret-position="1085">
+              <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -141,8 +169,20 @@
       <file leaf-file-name="NMFunc.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/necromantus/lang/NMFunc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="961">
-              <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+            <state relative-caret-position="651">
+              <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Block.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/necromantus/lang/Block.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="403">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -175,6 +215,9 @@
       <replace>)</replace>
     </replaceStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -200,7 +243,13 @@
         <option value="$PROJECT_DIR$/src/com/cln3/runtime/Runtime.java" />
         <option value="$PROJECT_DIR$/src/com/cln3/lang/CLN3NativeFunc.java" />
         <option value="$PROJECT_DIR$/src/com/cln3/runtime/Walker.java" />
+        <option value="$PROJECT_DIR$/src/com/necromantus/ParserException.java" />
+        <option value="$PROJECT_DIR$/src/com/necromantus/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/necromantus/lang/Block.java" />
+        <option value="$PROJECT_DIR$/src/com/necromantus/lang/NMFunc.java" />
+        <option value="$PROJECT_DIR$/src/com/necromantus/tokenizer/Tokenizer.java" />
         <option value="$PROJECT_DIR$/src/com/necromantus/runtime/Runtime.java" />
+        <option value="$PROJECT_DIR$/src/com/necromantus/runtime/Walker.java" />
       </list>
     </option>
   </component>
@@ -210,9 +259,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="1902" />
-    <option name="y" value="-2" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-95" />
+    <option name="y" value="-8" />
     <option name="width" value="1934" />
     <option name="height" value="1177" />
   </component>
@@ -221,66 +270,20 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="colon3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="colon3" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="colon3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="colon3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="colon3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="colon3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="necromantus" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="colon3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="colon3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="necromantus" type="462c0819:PsiDirectoryNode" />
-              <item name="lang" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="colon3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="colon3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="necromantus" type="462c0819:PsiDirectoryNode" />
-              <item name="parser" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="colon3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="colon3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="necromantus" type="462c0819:PsiDirectoryNode" />
-              <item name="runtime" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="colon3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="colon3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="necromantus" type="462c0819:PsiDirectoryNode" />
-              <item name="tokenizer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="colon3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="colon3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="necromantus" type="462c0819:PsiDirectoryNode" />
-              <item name="debug" type="462c0819:PsiDirectoryNode" />
+              <item name="Necromantus" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Necromantus" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -357,27 +360,29 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-2" width="1416" height="1036" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1186" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="4" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.3258637" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="9" weight="0.3294423" />
-      <window_info anchor="bottom" id="Version Control" order="5" show_stripe_button="false" />
-      <window_info anchor="bottom" x="1920" y="29" width="1400" height="997" id="Run" order="10" type="WINDOWED" weight="0.29829547" />
+      <window_info anchor="bottom" id="Version Control" order="5" />
+      <window_info anchor="bottom" x="0" y="23" width="1920" height="1147" id="Run" order="10" type="WINDOWED" weight="0.29829547" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.28882575" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.44481236" visible="true" weight="0.20571429" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.44223484" visible="true" weight="0.2046875" />
       <window_info id="Structure" order="1" sideWeight="0.63781625" side_tool="true" weight="0.20572917" />
       <window_info anchor="right" id="Ant Build" order="8" weight="0.24967575" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info id="Favorites" order="6" sideWeight="0.55518764" side_tool="true" visible="true" weight="0.20571429" />
-      <window_info anchor="bottom" x="800" y="100" width="725" height="678" id="Debug" order="11" sideWeight="0.49928877" weight="0.34744844" />
+      <window_info id="Favorites" order="6" sideWeight="0.5577651" side_tool="true" visible="true" weight="0.2046875" />
+      <window_info anchor="bottom" x="800" y="100" width="725" height="678" id="Debug" order="11" sideWeight="0.49928877" weight="0.3465909" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Coverage" order="7" sideWeight="0.50071126" side_tool="true" weight="0.29895833" />
       <window_info anchor="bottom" id="Inspection" order="3" weight="0.4" />
@@ -387,7 +392,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.3258637" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -418,7 +422,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="361" />
+      <option name="time" value="362" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -487,6 +491,27 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/necromantus/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="43" column="42" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/necromantus/lang/Scope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1860">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/necromantus/lang/NMFunc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="961">
+          <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/necromantus/runtime/Runtime.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1643">
@@ -627,55 +652,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/necromantus/tokenizer/Tokenizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/necromantus/ParserException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/necromantus/parser/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9517">
-          <caret line="312" column="38" selection-start-line="312" selection-start-column="38" selection-end-line="312" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/necromantus/token/Token.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="403">
           <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/necromantus/lang/NMFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="961">
-          <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/necromantus/lang/Scope.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1829">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/necromantus/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="43" column="42" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -686,6 +666,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/necromantus/ParserException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="11" column="96" selection-start-line="11" selection-start-column="96" selection-end-line="11" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/necromantus/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1085">
+          <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/necromantus/lang/NMNativeFunc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -693,17 +687,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/necromantus/runtime/Walker.java">
+    <entry file="file://$PROJECT_DIR$/src/com/necromantus/lang/Scope.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
-          <caret line="73" column="58" selection-start-line="73" selection-start-column="58" selection-end-line="73" selection-end-column="58" />
+        <state relative-caret-position="1829">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/necromantus/lang/Block.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/necromantus/lang/NMFunc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/necromantus/parser/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4805">
+          <caret line="160" selection-start-line="160" selection-end-line="160" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/necromantus/tokenizer/Tokenizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="837">
+          <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/necromantus/runtime/Runtime.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1632">
-          <caret line="68" column="35" lean-forward="true" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
+        <state relative-caret-position="496">
+          <caret line="64" column="42" lean-forward="true" selection-start-line="64" selection-start-column="42" selection-end-line="64" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/necromantus/runtime/Walker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="76" column="24" lean-forward="true" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="24" />
         </state>
       </provider>
     </entry>

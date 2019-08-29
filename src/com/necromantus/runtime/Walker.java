@@ -23,7 +23,7 @@ public class Walker {
     }
 
     private Object _walk(Node n) throws Exception {
-        System.out.println("Walker: " + n);
+        //System.out.println("Walker: " + n);
         if (n.nodeType == NodeType.ACTION && n.nodeType2 == NodeType.ActionNodeType.OPERATOR) {
 
             switch (n.value.toString()) {
@@ -85,7 +85,7 @@ public class Walker {
             return scope.getFunc(n.left.value.toString()).call(args);
         }
         throw new Exception("Uh... Something went wrong... That's not your fault! DEBUG: Walker doesn't know this thing, this feature will be removed or walker" +
-                "will be updated. nodeType = "
+                "will be updated. also, if this is not written in FEATURES.md file, please report it as an issue on github (include nodeType, nodeType2 and value) :) nodeType = "
                 + n.nodeType + " nodeType2 = " + n.nodeType2 + "  value = " + n.value);
     }
 
