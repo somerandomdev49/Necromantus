@@ -1,5 +1,5 @@
 # Necromantus
-Necromantus is a simple scriptiong language for java.
+Necromantus is a simple scripting language for java.
 
 Simple java API and syntax.
 ```java
@@ -17,15 +17,29 @@ Note: this ⬆⬆⬆ can be found in Runtime.java file.
 
 ```necromantus
 _ = call write("Hello, World!");
+_ = call write("Enter your name:");
+let plus = func (x, y) {
+	out = x + y;
+};
 let name = call read();
 _ = call write("Hello, ", name);
-
-let sum = func (x, y) {
-    out = x + y;
+_ = call write("two plus two is ", (call plus(2, 2)));
+_ = if name is "Admin" {
+	_ = call write("ACCESS GRANTED!");
+	let correct = 1;
+	let answer = "";
+	_ = loop correct is 1 {
+		_ = call write("What is 2 + 2?");
+		answer = call read();
+		_ = if answer not "4" {
+			correct = 0;
+		};
+	};
+	_ = call write("INCORRECT!", " TWO PLUS TWO IS ", (call plus(2, 2)));
 };
-
-let r = call sum(2, 2);
-_ = call write("sum of two plus two and two plus two is: ", 2 + 2 + (call sum(2, 2));
+_ = if name not "Admin" {
+	_ = call write("ACCESS DENIED!");
+};
 ```
 
 if some unexpected behaviour appears, make an issue. (PLEASE!!!)
