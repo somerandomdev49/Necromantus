@@ -1,4 +1,5 @@
-# Necromantus
+# Necromantus [![Build Status](https://travis-ci.org/somerandomdev49/Necromantus.png?branch=master)](https://travis-ci.org/somerandomdev49/Necromantus.png)
+
 Necromantus is a simple scripting language for java.
 
 Simple java API and syntax.
