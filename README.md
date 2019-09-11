@@ -1,6 +1,6 @@
-<img width="100" height="100" src="https://raw.githubusercontent.com/somerandomdev49/Necromantus/master/NECROMANTUS-LOGO.png"></img>
+#  Necromantus [![Build Status](https://travis-ci.org/somerandomdev49/Necromantus.png?branch=master)](https://travis-ci.org/somerandomdev49/Necromantus.png)
 
-# Necromantus [![Build Status](https://travis-ci.org/somerandomdev49/Necromantus.png?branch=master)](https://travis-ci.org/somerandomdev49/Necromantus.png)
+<img width="500" height="500" src="https://raw.githubusercontent.com/somerandomdev49/Necromantus/master/NECROMANTUS-LOGO.png"></img>
 
 Necromantus is a simple scripting language for java.
 
