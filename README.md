@@ -6,17 +6,28 @@ Necromantus is a simple scripting language for java.
 
 Simple java API and syntax.
 ```java
-Tokenizer t = new Tokenizer(contents);
-parser = new Parser(t);
-Node dd = parser.parseSource();
-Scope scope = new Scope(null);
-Walker walker = new Walker(scope);
-walker.putNativeFunc(new NMNativeFunc("write",  (ArrayList<Object> args) -> {for(Object arg : args)System.out.print(arg);System.out.println();return null;}));
-walker.putNativeFunc(new NMNativeFunc("read",   (ArrayList<Object> args) -> new Scanner(System.in).nextLine()));
-for (Node statement : ((RootNode) src).children)
-    walker.walk(statement);
+class Example {
+    public static void main(String[] args) {
+        Tokenizer t = new Tokenizer(contents);
+        parser = new Parser(t);
+        Node dd = parser.parseSource();
+        Scope scope = new Scope(null);
+        Walker walker = new Walker(scope);
+        walker.putNativeFunc(new NMNativeFunc("write", (ArrayList<Object> args) -> {
+            for(Object arg : args)
+                System.out.print(arg);
+            System.out.println();
+            return null;
+        }));
+        walker.putNativeFunc(new NMNativeFunc("read", (ArrayList<Object> args) -> 
+            new Scanner(System.in).nextLine()
+        ));
+        for (Node statement : ((RootNode) src).children)
+            walker.walk(statement);
+    }
+}
 ```
-Note: this ⬆⬆⬆ can be found in Runtime.java file.
+> Note: this ⬆⬆⬆ is default stuff, so you can use these functions straight away.
 
 ```necromantus
 write("Hello, World!");
@@ -46,5 +57,5 @@ if name not "Admin" {
 ```
 
 if some unexpected behaviour appears, make an issue. (PLEASE!!!)
-
+:smile:
 `:D`
