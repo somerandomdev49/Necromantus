@@ -41,22 +41,27 @@ class Main {
 
     public static void main(String[] args) {
         if(args.length == 0) {
-            System.err.println("Usage: necromantus <path>");
+            System.err.println("Usage: necromantus <path> [-d] [-s]");
             System.exit(-1);
         }
         try {
+            boolean debug = false;
+            boolean silent = false;
+            for(String arg : args)
+                if(arg.equals("-d")) debug=true;
+                else if(arg.equals("-s")) silent=true;
             byte[] content = Files.readAllBytes(Paths.get(args[0]));
             Instant start = Instant.now();
             try {
-                new Runtime(new String(content)).run();
+                new Runtime(debug, silent, new String(content)).run();
+                System.out.println("Success");
             } catch (ParserException e) {
                 System.err.println(e.getMessage());
                 e.printStackTrace();
-            } finally {
-                Instant done = Instant.now();
-                Duration time = Duration.between(start, done);
-                System.out.println("Necromantus interpreter completed in: " + time.getNano() / 1E+9 + "s.");
             }
+            Instant done = Instant.now();
+            Duration time = Duration.between(start, done);
+            if(!silent)System.out.println("Necromantus interpreter completed in: " + time.getNano() / 1E+9 + "s.");
         } catch (Exception e) {
             e.printStackTrace();
         }

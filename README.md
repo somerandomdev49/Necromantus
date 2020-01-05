@@ -8,7 +8,7 @@ Simple java API and syntax.
 ```java
 Tokenizer t = new Tokenizer(contents);
 parser = new Parser(t);
-Node src = parser.parseSource();
+Node dd = parser.parseSource();
 Scope scope = new Scope(null);
 Walker walker = new Walker(scope);
 walker.putNativeFunc(new NMNativeFunc("write",  (ArrayList<Object> args) -> {for(Object arg : args)System.out.print(arg);System.out.println();return null;}));
@@ -19,29 +19,29 @@ for (Node statement : ((RootNode) src).children)
 Note: this ⬆⬆⬆ can be found in Runtime.java file.
 
 ```necromantus
-_ = call write("Hello, World!");
-_ = call write("Enter your name:");
-let plus = func (x, y) {
-	out = x + y;
+write("Hello, World!");
+write("Enter your name:");
+let weird = func (x, y) {
+	out = (x + y) * (x - y);
 };
-let name = call read();
-_ = call write("Hello, ", name);
-_ = call write("two plus two is ", (call plus(2, 2)));
-_ = if name is "Admin" {
-	_ = call write("ACCESS GRANTED!");
+let name = read();
+write("Hello, ", name);
+write("two plus two is ", 2 + 2);
+if name is "Admin" {
+	write("ACCESS GRANTED!");
 	let correct = 1;
 	let answer = "";
-	_ = loop correct is 1 {
-		_ = call write("What is 2 + 2?");
-		answer = call read();
-		_ = if answer not "4" {
+	loop correct is 1 {
+		write("What is (2 + 2) * (2 - 2)?");
+		answer = read();
+		if answer not "0" {
 			correct = 0;
 		};
 	};
-	_ = call write("INCORRECT!", " TWO PLUS TWO IS ", (call plus(2, 2)));
+	write("INCORRECT!", " TWO PLUS TWO IS ", weird(2, 2));
 };
-_ = if name not "Admin" {
-	_ = call write("ACCESS DENIED!");
+if name not "Admin" {
+	write("ACCESS DENIED!");
 };
 ```
 

@@ -15,11 +15,13 @@ import java.util.Scanner;
 public class Runtime {
     private final Tokenizer t;
     private final Parser parser;
-
-    public Runtime(String f) {
+    private boolean debug, silent;
+    public Runtime(boolean debug, boolean silent, String f) {
         //String f = new Scanner(System.in).nextLine();
-        t = new Tokenizer(f);
+        t = new Tokenizer(debug, silent, f);
         parser = new Parser(t);
+        this.debug = debug;
+        this.silent = silent;
     }
 
     private static void _printTree(Node root, int level) {
@@ -54,12 +56,14 @@ public class Runtime {
     }
 
     public void run() throws Exception {
+        t.tokenize();
         Node src = parser.parseSource();
-        System.out.println("Parsed source");
+        if(debug||!silent)System.out.println("Parsed source");
 //        printTree(src);
-//        for(String str : t.tokenEatingHistory) {
-//            System.out.println(str);
-//        }
+        for(String str : t.tokenEatingHistory) {
+            System.out.println(str);
+        }
+        System.out.println("t");
 
         Scope scope = new Scope(null);
         Walker walker = new Walker(scope);

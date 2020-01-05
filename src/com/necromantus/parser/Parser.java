@@ -135,10 +135,18 @@ public final class Parser {
      * @throws ParserException when there is incorrect syntax.
      */
     private Node parseFuncCall() throws ParserException {
-        Node n = new Node(NodeType.ACTION, NodeType.ActionNodeType.FUNC_CALL, "FUNC_CALL");
         Node callName = parseVar();
+        return parseFuncCallWithName((String)callName.value);
+    }
+    /**
+     * Parse call of a function. (does not parse call keyword)
+     * @return Function Call Node.
+     * @throws ParserException when there is incorrect syntax.
+     */
+    private Node parseFuncCallWithName(String name) throws ParserException {
+        Node n = new Node(NodeType.ACTION, NodeType.ActionNodeType.FUNC_CALL, "FUNC_CALL");
         Node callArgs = parseFuncCallArgs();
-        n.add(false, callName);
+        n.add(false, new Node(NodeType.VALUE, NodeType.ValueNodeType.VAR, name));
         n.add(true, callArgs);
         return n;
     }
@@ -265,17 +273,30 @@ public final class Parser {
 
 
     public Node parseStatement() throws ParserException {
-        NodeType.StatementNodeType thing;
+        NodeType.StatementNodeType thing; // so no duplicates.
         Token letQM = tokenizer.seekToken();
         if (letQM.value.equals("let")) {
             thing = NodeType.StatementNodeType.VAR_DEFINITION;
             tokenizer.nextToken();
+        } else if(letQM.value.equals("if")) {
+            tokenizer.nextToken();
+            Node i = parseIf();
+            if(tokenizer.nextToken().id != TokenIdManager.getIdByDesc(";"))
+                throw new ParserException("Expected ';'");
+            return i;
+        } else if(letQM.value.equals("loop")) {
+            tokenizer.nextToken();
+            Node l = parseLoop();
+            if(tokenizer.nextToken().id != TokenIdManager.getIdByDesc(";"))
+                throw new ParserException("Expected ';'");
+            return l;
         } else {
             thing = NodeType.StatementNodeType.VAR_ASSIGNMENT;
         }
         Node name = parseVar();
-        Token eqOperator = tokenizer.nextToken();
+        Token eqOperator = tokenizer.seekToken();
         if (eqOperator.id == TokenIdManager.getIdByDesc("=")) {
+            tokenizer.nextToken();
             Node val = parseExpr();
             Token semicolon = tokenizer.nextToken();
             if (semicolon.id == TokenIdManager.getIdByDesc(";")) {
@@ -284,8 +305,14 @@ public final class Parser {
                 throw new ParserException("Expected ';'");
             }
         } else if (eqOperator.id == TokenIdManager.getIdByDesc("(")) {
+            Node n = parseFuncCallWithName((String)name.value);
+            Token semicolon = tokenizer.nextToken();
+            if(semicolon.id == TokenIdManager.getIdByDesc(";"))
+                return n;
+            else
+                throw new ParserException("Expected ';'");
         }
-        throw new ParserException("Expected '='");
+        throw new ParserException("Expected '=' or '('");
     }
 
 //    public Node parseIf() throws Exception {
@@ -315,9 +342,6 @@ public final class Parser {
         if (kwQM.id == 0 && kwQM.value.equals("func")) {
             tokenizer.nextToken();
             return parseFunc();
-        } else if (kwQM.id == 0 && kwQM.value.equals("call")) {
-            tokenizer.nextToken();
-            return parseFuncCall();
         } else if (kwQM.id == 0 && kwQM.value.equals("if")) {
             tokenizer.nextToken();
             return parseIf();
@@ -326,13 +350,26 @@ public final class Parser {
             return parseLoop();
         } else {
             if (kwQM.id != TokenIdManager.getIdByDesc("STRING")) {
-                Node expr = parseAdd();
-                return new Node(NodeType.EXPRESSION, null, "EXPRESSION", expr, null);
+                Token ob = tokenizer.seekToken(1);
+                if(ob.id == TokenIdManager.getIdByDesc("(")) {
+                    tokenizer.nextToken(); // skip the name. idk why, could've just used parseFuncCall(), but who cares?
+                    return parseFuncCallWithName(kwQM.value);
+                } else {
+                    Node expr = parseAdd();
+                    return new Node(NodeType.EXPRESSION, null, "EXPRESSION", expr, null);
+                }
             } else {
                 tokenizer.nextToken();
                 return new Node(NodeType.EXPRESSION, null, "EXPRESSION", new Node(NodeType.VALUE, NodeType.ValueNodeType.STRING, kwQM.value.substring(1, kwQM.value.length() - 1)), null);
             }
         }
+    }
+
+    private void log(String ...vals) {
+        for(String val : vals) {
+            System.out.print(val + " ");
+        }
+        System.out.println();
     }
 
     public Node parseSource() throws ParserException {
