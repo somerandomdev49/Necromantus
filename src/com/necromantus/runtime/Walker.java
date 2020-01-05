@@ -33,7 +33,7 @@ public class Walker {
     private String getTypeName(Object val) {
         /**/if  ( val instanceof Float   )  return "float"  ;
         else if ( val instanceof Boolean )  return "bool"   ;
-        return "<NO SUCH TYPE NAME, NOT YOUR FAULT, PLEASE REPORT IT AS AN ISSUE ON GITHUB>";
+        return "<NO SUCH TYPE NAME, NOT YOUR FAULT, PLEASE REPORT IT AS AN ISSUE ON GITHUB (INCLUDE THE NAME!)>";
     }
 
     private Object _walk(Node n) throws Exception {
@@ -128,8 +128,8 @@ public class Walker {
             if (!(expr instanceof Boolean)) {
                 throw new Exception("Expected bool, but got " + getTypeName(expr));
             }
-            Block b = new Block(scope, ((BlockNode) n.right));
             while((Boolean) expr) {
+                Block b = new Block(scope, ((BlockNode) n.right));
                 b.walk();
                 expr = _walk(n.left);
             }

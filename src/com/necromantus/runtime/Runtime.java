@@ -6,6 +6,7 @@ import com.necromantus.parser.Node;
 import com.necromantus.parser.NodeType;
 import com.necromantus.parser.Parser;
 import com.necromantus.parser.RootNode;
+import com.necromantus.token.TokenInfo;
 import com.necromantus.tokenizer.Tokenizer;
 
 import java.util.ArrayList;
@@ -16,9 +17,9 @@ public class Runtime {
     private final Tokenizer t;
     private final Parser parser;
     private boolean debug, silent;
-    public Runtime(boolean debug, boolean silent, String f) {
+    public Runtime(boolean debug, boolean silent, String f, ArrayList<TokenInfo> tokenInfos) {
         //String f = new Scanner(System.in).nextLine();
-        t = new Tokenizer(debug, silent, f);
+        t = new Tokenizer(debug, silent, f, tokenInfos);
         parser = new Parser(t);
         this.debug = debug;
         this.silent = silent;
@@ -58,19 +59,29 @@ public class Runtime {
     public void run() throws Exception {
         t.tokenize();
         Node src = parser.parseSource();
-        if(debug||!silent)System.out.println("Parsed source");
+        //if(debug||!silent)System.out.println("Parsed source");
 //        printTree(src);
-        for(String str : t.tokenEatingHistory) {
-            System.out.println(str);
-        }
-        System.out.println("t");
+//        for(String str : t.tokenEatingHistory) {
+//            System.out.println(str);
+//        }
+        //System.out.println("t");
 
         Scope scope = new Scope(null);
         Walker walker = new Walker(scope);
 
         walker.putNativeFunc(new NMNativeFunc("write",  (ArrayList<Object> args) -> {for(Object arg:args){System.out.print(arg);}System.out.print("\n");return null;}));
+        walker.putNativeFunc(new NMNativeFunc("writes",  (ArrayList<Object> args) -> {for(Object arg:args){System.out.print(arg);}return null;}));
 
         walker.putNativeFunc(new NMNativeFunc("read",   (ArrayList<Object> args) -> new Scanner(System.in).nextLine()));
+
+        walker.putNativeFunc(new NMNativeFunc("run",  (ArrayList<Object> args) -> {
+            try {
+                new Runtime(debug, silent, (String)args.get(0), t.tokenInfos).run();
+            } catch(Exception e) {
+                System.err.println("Syntax error!");
+            }
+            return null;
+        }));
 
         for (Node statement : ((RootNode) src).children)
             walker.walk(statement);

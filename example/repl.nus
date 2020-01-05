@@ -1,0 +1,12 @@
+let running = 1;
+
+loop running is 1 {
+    writes(">>> ");
+    let input = read();
+    if input is "exit" {
+        running = 0;
+    }
+    if running is 1 {
+        run(input);
+    }
+}

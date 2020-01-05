@@ -3,6 +3,8 @@ package com.necromantus;
 import com.necromantus.parser.Node;
 import com.necromantus.parser.NodeType;
 import com.necromantus.runtime.Runtime;
+import com.necromantus.token.TokenIdManager;
+import com.necromantus.token.TokenInfo;
 
 import javax.sound.sampled.*;
 import java.io.File;
@@ -13,6 +15,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.regex.Pattern;
 
 class Main {
 
@@ -53,7 +56,13 @@ class Main {
             byte[] content = Files.readAllBytes(Paths.get(args[0]));
             Instant start = Instant.now();
             try {
-                new Runtime(debug, silent, new String(content)).run();
+                ArrayList<TokenInfo> tokenInfos = new ArrayList<>();
+                tokenInfos.add(new TokenInfo(Pattern.compile("^([a-zA-Z_][a-zA-Z0-9_]*)"), TokenIdManager.getId("NAME")));
+                tokenInfos.add(new TokenInfo(Pattern.compile("^((-)?[0-9]+(\\.[0-9]+)?)"), TokenIdManager.getId("NUMBER")));
+                tokenInfos.add(new TokenInfo(Pattern.compile("\"[^\"]*\""), TokenIdManager.getId("STRING")));
+                for (String a : "+ - * / ( ) = ; , { } [ ] == > < <= >= != & |".split(" "))
+                    tokenInfos.add(new TokenInfo(Pattern.compile("^(" + Pattern.quote(a) + ")"), TokenIdManager.getId("" + a)));
+                new Runtime(debug, silent, new String(content), tokenInfos).run();
                 System.out.println("Success");
             } catch (ParserException e) {
                 System.err.println(e.getMessage());

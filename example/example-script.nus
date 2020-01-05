@@ -9,10 +9,9 @@ write("two plus two is ", 2 + 2);
 if name is "Admin" {
 	write("ACCESS GRANTED!");
 	let correct = 1;
-	let answer = "";
 	loop correct is 1 {
 		write("What is (2 + 2) * (2 - 2)?");
-		answer = read();
+		let answer = read();
 		if answer not "0" {
 			correct = 0;
 		};

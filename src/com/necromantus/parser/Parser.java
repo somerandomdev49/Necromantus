@@ -280,16 +280,14 @@ public final class Parser {
             tokenizer.nextToken();
         } else if(letQM.value.equals("if")) {
             tokenizer.nextToken();
-            Node i = parseIf();
-            if(tokenizer.nextToken().id != TokenIdManager.getIdByDesc(";"))
-                throw new ParserException("Expected ';'");
-            return i;
+            //if(tokenizer.nextToken().id != TokenIdManager.getIdByDesc(";"))
+            //    throw new ParserException("Expected ';'");
+            return parseIf();
         } else if(letQM.value.equals("loop")) {
             tokenizer.nextToken();
-            Node l = parseLoop();
-            if(tokenizer.nextToken().id != TokenIdManager.getIdByDesc(";"))
-                throw new ParserException("Expected ';'");
-            return l;
+            //            if(tokenizer.nextToken().id != TokenIdManager.getIdByDesc(";"))
+//                throw new ParserException("Expected ';'");
+            return parseLoop();
         } else {
             thing = NodeType.StatementNodeType.VAR_ASSIGNMENT;
         }

@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 public class Tokenizer {
     private String actualStr;
-    private final List<TokenInfo> tokenInfos = new ArrayList<>();
+    public ArrayList<TokenInfo> tokenInfos;
     private int firstCharIndex = 1;
     public String str;
     private int index = -1;
@@ -21,23 +21,19 @@ public class Tokenizer {
     private ArrayList<Token> tokens = new ArrayList<>();
     private boolean debug, silent;
 
-    public Tokenizer(boolean debug, boolean silent, String str) {
+    public Tokenizer(boolean debug, boolean silent, String str, ArrayList<TokenInfo> tokenInfos) {
         this.str = str;
         this.actualStr = str;
-        tokenInfos.add(new TokenInfo(Pattern.compile("^([a-zA-Z_][a-zA-Z0-9_]*)"), TokenIdManager.getId("NAME")));
-        tokenInfos.add(new TokenInfo(Pattern.compile("^((-)?[0-9]+(\\.[0-9]+)?)"), TokenIdManager.getId("NUMBER")));
-        tokenInfos.add(new TokenInfo(Pattern.compile("\"[^\"]*\""), TokenIdManager.getId("STRING")));
-        for (String a : "+ - * / ( ) = ; , { } [ ] == > < <= >= != & |".split(" "))
-            tokenInfos.add(new TokenInfo(Pattern.compile("^(" + Pattern.quote(a) + ")"), TokenIdManager.getId("" + a)));
+        this.tokenInfos = tokenInfos;
         this.debug = debug;
         this.silent = silent;
     }
 
     public Token nextToken() {
-        if(index==-1)
-            System.out.println(str.trim().replace("\n", "").replace("\t", "").replace("\r", ""));
-        else
-            System.out.println(tokenEatingHistory.get(index));
+//        if(index==-1)
+//            System.out.println(str.trim().replace("\n", "").replace("\t", "").replace("\r", ""));
+//        else
+//            System.out.println(tokenEatingHistory.get(index));
         return tokens.get(++index);
     }
 
