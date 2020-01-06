@@ -29,7 +29,7 @@ class Example {
 ```
 > Note: this ⬆⬆⬆ is default stuff, so you can use these functions straight away.
 
-```necromantus
+```javascript
 write("Hello, World!");
 write("Enter your name:");
 let weird = func (x, y) {
@@ -40,20 +40,22 @@ write("Hello, ", name);
 write("two plus two is ", 2 + 2);
 if name is "Admin" {
 	write("ACCESS GRANTED!");
-	let correct = 1;
-	let answer = "";
-	loop correct is 1 {
+	let correct = true;
+	while correct {
 		write("What is (2 + 2) * (2 - 2)?");
-		answer = read();
-		if answer not "0" {
-			correct = 0;
-		};
-	};
+		let answer = read();
+		if 0 not (stof(answer)) {
+			correct = false;
+		}
+	}
 	write("INCORRECT!", " TWO PLUS TWO IS ", weird(2, 2));
-};
-if name not "Admin" {
-	write("ACCESS DENIED!");
-};
+} elseif name is "SomeRandomDev49" {
+    write("Hello, God.");
+} elseif name is "hehehe" {
+    write("uh oh!");
+} else {
+    write("ACCESS DENIED!");
+}
 ```
 
 if some unexpected behaviour appears, make an issue. (PLEASE!!!)

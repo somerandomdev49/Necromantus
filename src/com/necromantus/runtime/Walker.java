@@ -1,10 +1,7 @@
 package com.necromantus.runtime;
 
 import com.necromantus.lang.*;
-import com.necromantus.parser.BlockNode;
-import com.necromantus.parser.ListNode;
-import com.necromantus.parser.Node;
-import com.necromantus.parser.NodeType;
+import com.necromantus.parser.*;
 
 import java.util.ArrayList;
 
@@ -115,14 +112,21 @@ public class Walker {
             }
             return scope.getFunc(n.left.value.toString()).call(args);
         } else if (n.nodeType == NodeType.IF) {
-            Object expr = _walk(n.left);
+            IfNode i = (IfNode)n;
+            Object expr = _walk(i.left);
             if (expr instanceof Boolean) {
                 if ((Boolean) expr) {
-                    new Block(scope, ((BlockNode) n.right)).walk();
-                    return null;
-                } else return null;
+                    new Block(scope, ((BlockNode) i.right)).walk();
+                    return true;
+                } else {
+                        if(i.elseIf != null) if((Boolean) _walk(i.elseIf) == true) return true;
+                        if(i.elseNode != null) {
+                            new Block(scope, ((BlockNode) i.elseNode)).walk();
+                        }
+                        return true;
+                }
             } else
-                throw new Exception("Expected bool, but got " + getTypeName(expr));
+                throw new Exception("Expected a boolean, but got " + getTypeName(expr));
         } else if (n.nodeType == NodeType.LOOP) {
             Object expr = _walk(n.left);
             if (!(expr instanceof Boolean)) {

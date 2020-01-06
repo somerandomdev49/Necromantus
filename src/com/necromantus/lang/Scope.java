@@ -33,6 +33,8 @@ public class Scope {
     public Scope(Scope parentScope) { // that's not copy constructor, intellij IDEA!
         vars.add(new NMVariable("nonsense", null));
         vars.add(new NMVariable("_", null));
+        vars.add(new NMVariable("true", true));
+        vars.add(new NMVariable("false", false));
         this.parentScope = parentScope;
     }
 

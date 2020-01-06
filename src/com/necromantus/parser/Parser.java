@@ -79,10 +79,21 @@ public final class Parser {
 
     //<--------------------- FLOW CONTROL --------------------->//
 
-    private Node parseIf() throws ParserException {
+    private IfNode parseIf() throws ParserException {
         Node expression = parseExpr();
         BlockNode block = parseBlock();
-        return new Node(NodeType.IF, null, "IF", expression, block);
+        Token elseIfQM = tokenizer.seekToken();
+        IfNode elseIf = null;
+        Node elseNode = null;
+        if(elseIfQM.id == 0 && elseIfQM.value.equals("elseif")) {
+            tokenizer.nextToken();
+            elseIf = parseIf();
+        }
+        if(elseIfQM.id == 0 && elseIfQM.value.equals("else")) {
+            tokenizer.nextToken();
+            elseNode = parseBlock();
+        }
+        return new IfNode(expression, block, elseIf, elseNode);
     }
 
     private Node parseLoop() throws ParserException {
@@ -283,7 +294,7 @@ public final class Parser {
             //if(tokenizer.nextToken().id != TokenIdManager.getIdByDesc(";"))
             //    throw new ParserException("Expected ';'");
             return parseIf();
-        } else if(letQM.value.equals("loop")) {
+        } else if(letQM.value.equals("while")) {
             tokenizer.nextToken();
             //            if(tokenizer.nextToken().id != TokenIdManager.getIdByDesc(";"))
 //                throw new ParserException("Expected ';'");
@@ -343,15 +354,15 @@ public final class Parser {
         } else if (kwQM.id == 0 && kwQM.value.equals("if")) {
             tokenizer.nextToken();
             return parseIf();
-        } else if (kwQM.id == 0 && kwQM.value.equals("loop")) {
+        } else if (kwQM.id == 0 && kwQM.value.equals("while")) {
             tokenizer.nextToken();
             return parseLoop();
         } else {
             if (kwQM.id != TokenIdManager.getIdByDesc("STRING")) {
                 Token ob = tokenizer.seekToken(1);
                 if(ob.id == TokenIdManager.getIdByDesc("(")) {
-                    tokenizer.nextToken(); // skip the name. idk why, could've just used parseFuncCall(), but who cares?
-                    return parseFuncCallWithName(kwQM.value);
+                    // old, hehe. tokenizer.nextToken(); // skip the name. idk why, could've just used parseFuncCall(), but who cares?
+                    return parseFuncCall();
                 } else {
                     Node expr = parseAdd();
                     return new Node(NodeType.EXPRESSION, null, "EXPRESSION", expr, null);

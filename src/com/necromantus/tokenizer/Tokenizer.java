@@ -30,10 +30,10 @@ public class Tokenizer {
     }
 
     public Token nextToken() {
-//        if(index==-1)
-//            System.out.println(str.trim().replace("\n", "").replace("\t", "").replace("\r", ""));
-//        else
-//            System.out.println(tokenEatingHistory.get(index));
+        if(index==-1)
+            System.out.println(str.trim().replace("\n", "").replace("\t", "").replace("\r", ""));
+        else
+            System.out.println(tokenEatingHistory.get(index));
         return tokens.get(++index);
     }
 

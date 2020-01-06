@@ -58,12 +58,13 @@ public class Runtime {
 
     public void run() throws Exception {
         t.tokenize();
-        Node src = parser.parseSource();
-        //if(debug||!silent)System.out.println("Parsed source");
-//        printTree(src);
 //        for(String str : t.tokenEatingHistory) {
 //            System.out.println(str);
 //        }
+        Node src = parser.parseSource();
+        //if(debug||!silent)System.out.println("Parsed source");
+//        printTree(src);
+
         //System.out.println("t");
 
         Scope scope = new Scope(null);
@@ -82,6 +83,15 @@ public class Runtime {
             }
             return null;
         }));
+        walker.putNativeFunc(new NMNativeFunc("stof",  (ArrayList<Object> args) -> {
+            try {
+                return Float.parseFloat((String)args.get(0));
+            } catch(Exception e) {
+                System.err.println("Unable to convert from string to float!");
+            }
+            return null;
+        }));
+        walker.putNativeFunc(new NMNativeFunc("toString",  (ArrayList<Object> args) -> args.get(0).toString()));
 
         for (Node statement : ((RootNode) src).children)
             walker.walk(statement);

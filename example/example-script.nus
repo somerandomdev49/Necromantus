@@ -8,16 +8,19 @@ write("Hello, ", name);
 write("two plus two is ", 2 + 2);
 if name is "Admin" {
 	write("ACCESS GRANTED!");
-	let correct = 1;
-	loop correct is 1 {
+	let correct = true;
+	while correct {
 		write("What is (2 + 2) * (2 - 2)?");
 		let answer = read();
-		if answer not "0" {
-			correct = 0;
-		};
-	};
+		if 0 not (stof(answer)) {
+			correct = false;
+		}
+	}
 	write("INCORRECT!", " TWO PLUS TWO IS ", weird(2, 2));
-};
-if name not "Admin" {
+} elseif name is "SomeRandomDev49" {
+    write("Hello, God.");
+} elseif name is "hehehe" {
+    write("uh oh!");
+} else {
 	write("ACCESS DENIED!");
-};
+}
