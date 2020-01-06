@@ -61,3 +61,14 @@ if name is "Admin" {
 if some unexpected behaviour appears, make an issue. (PLEASE!!!)
 :smile:
 `:D`
+
+# Features
+
+| Feature | Description            | Status | Emoji
+|---------|------------------------|--------|:------:|
+| If-Else | Add `else` and `elseif`|  Doing |   🙃   |
+| Escaping| String escaping        |  Soon  |   🤨   |
+| Types   | Add type support       |  uh oh |   🤔   |
+| JS gen  | JavaScript code gen    |  Meh.  |   😎   |
+
+
