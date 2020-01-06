@@ -70,5 +70,6 @@ if some unexpected behaviour appears, make an issue. (PLEASE!!!)
 | Escaping| String escaping        |  Soon     |   🤨   |
 | Types   | Add type support       |  uh oh    |   🤔   |
 | JS gen  | JavaScript code gen    |  Meh.     |   😎   |
+| Modules | Add module support     |In Progress|        |
 
 
