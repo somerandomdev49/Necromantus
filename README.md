@@ -64,11 +64,11 @@ if some unexpected behaviour appears, make an issue. (PLEASE!!!)
 
 # Features
 
-| Feature | Description            | Status | Emoji
-|---------|------------------------|--------|:------:|
-| If-Else | Add `else` and `elseif`|  Doing |   🙃   |
-| Escaping| String escaping        |  Soon  |   🤨   |
-| Types   | Add type support       |  uh oh |   🤔   |
-| JS gen  | JavaScript code gen    |  Meh.  |   😎   |
+| Feature | Description            | Status    | Emoji  |
+|---------|------------------------|-----------|:------:|
+| If-Else | Add `else` and `elseif`|  Finished |   🙃   |
+| Escaping| String escaping        |  Soon     |   🤨   |
+| Types   | Add type support       |  uh oh    |   🤔   |
+| JS gen  | JavaScript code gen    |  Meh.     |   😎   |
 
 
