@@ -62,7 +62,7 @@ if some unexpected behaviour appears, make an issue. (PLEASE!!!)
 :smile:
 `:D`
 
-# Features
+# Future stuff and TODO and some features
 
 | Feature | Description            | Status    | Emoji  |
 |---------|------------------------|-----------|:------:|
