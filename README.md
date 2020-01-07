@@ -71,5 +71,6 @@ if some unexpected behaviour appears, make an issue. (PLEASE!!!)
 | Types   | Add type support       |   Soon      |   🤔   |
 | JS gen  | JavaScript code gen    |   Meh.      |   😎   |
 | Modules | Add module support     | In Progress |   🙂   |
+| Objects | Objects and stuff      | In Progress |   🤔   |
 
 
