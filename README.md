@@ -64,12 +64,12 @@ if some unexpected behaviour appears, make an issue. (PLEASE!!!)
 
 # Future stuff and TODO and some features
 
-| Feature | Description            | Status    | Emoji  |
-|---------|------------------------|-----------|:------:|
-| If-Else | Add `else` and `elseif`|  Finished |   🙃   |
-| Escaping| String escaping        |  Soon     |   🤨   |
-| Types   | Add type support       |  uh oh    |   🤔   |
-| JS gen  | JavaScript code gen    |  Meh.     |   😎   |
-| Modules | Add module support     |In Progress|        |
+| Feature | Description            |  Status     | Emoji  |
+|---------|------------------------|-------------|:------:|
+| If-Else | Add `else` and `elseif`|   Finished  |   🙃   |
+| Escaping| String escaping        |   Soon      |   😐   |
+| Types   | Add type support       |   Soon      |   🤔   |
+| JS gen  | JavaScript code gen    |   Meh.      |   😎   |
+| Modules | Add module support     | In Progress |   🙂   |
 
 
