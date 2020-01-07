@@ -72,5 +72,6 @@ if some unexpected behaviour appears, make an issue. (PLEASE!!!)
 | JS gen  | JavaScript code gen    |   Meh.      |   😎   |
 | Modules | Add module support     | In Progress |   🙂   |
 | Objects | Objects and stuff      | In Progress |   🤔   |
+| REPL    | Interactive mode (`-i`)|   Finished  |   😎   |
 
 
