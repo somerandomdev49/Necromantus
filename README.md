@@ -73,5 +73,6 @@ if some unexpected behaviour appears, make an issue. (PLEASE!!!)
 | Modules | Add module support     | In Progress |   🙂   |
 | Objects | Objects and stuff      | In Progress |   🤔   |
 | REPL    | Interactive mode (`-i`)|   Finished  |   😎   |
+| Surprise| Won't tell you until its done| Soon | 😈 |
 
 
