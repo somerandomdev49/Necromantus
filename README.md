@@ -74,5 +74,6 @@ if some unexpected behaviour appears, make an issue. (PLEASE!!!)
 | Objects | Objects and stuff      | In Progress |   🤔   |
 | REPL    | Interactive mode (`-i`)|   Finished  |   😎   |
 | Surprise| Won't tell you until its done| Soon | 😈 |
+|Parser|Reworking the Parser for above stuff|In Progress|😈|
 
 
