@@ -58,6 +58,8 @@ if name is "Admin" {
 }
 ```
 
+> A little thing: to disable all messages, remove an `if` statement in `nextToken()` of `Tokenizer.java` and recompile the program :)
+
 if some unexpected behaviour appears, make an issue. (PLEASE!!!)
 :smile:
 `:D`
