@@ -4,31 +4,6 @@
 
 Necromantus is a simple scripting language for java.
 
-Simple java API and syntax.
-```java
-class Example {
-    public static void main(String[] args) {
-        Tokenizer t = new Tokenizer(contents);
-        parser = new Parser(t);
-        Node dd = parser.parseSource();
-        Scope scope = new Scope(null);
-        Walker walker = new Walker(scope);
-        walker.putNativeFunc(new NMNativeFunc("write", (ArrayList<Object> args) -> {
-            for(Object arg : args)
-                System.out.print(arg);
-            System.out.println();
-            return null;
-        }));
-        walker.putNativeFunc(new NMNativeFunc("read", (ArrayList<Object> args) -> 
-            new Scanner(System.in).nextLine()
-        ));
-        for (Node statement : ((RootNode) src).children)
-            walker.walk(statement);
-    }
-}
-```
-> Note: this ⬆⬆⬆ is default stuff, so you can use these functions straight away.
-
 ```javascript
 write("Hello, World!");
 write("Enter your name:");
@@ -57,6 +32,31 @@ if name is "Admin" {
     write("ACCESS DENIED!");
 }
 ```
+
+Simple java API and syntax.
+```java
+class Example {
+    public static void main(String[] args) {
+        Tokenizer t = new Tokenizer(contents);
+        parser = new Parser(t);
+        Node dd = parser.parseSource();
+        Scope scope = new Scope(null);
+        Walker walker = new Walker(scope);
+        walker.putNativeFunc(new NMNativeFunc("write", (ArrayList<Object> args) -> {
+            for(Object arg : args)
+                System.out.print(arg);
+            System.out.println();
+            return null;
+        }));
+        walker.putNativeFunc(new NMNativeFunc("read", (ArrayList<Object> args) -> 
+            new Scanner(System.in).nextLine()
+        ));
+        for (Node statement : ((RootNode) src).children)
+            walker.walk(statement);
+    }
+}
+```
+> Note: this ⬆⬆⬆ is default stuff, so you can use these functions straight away.
 
 > A little thing: to disable all messages, remove an `if` statement in `nextToken()` of `Tokenizer.java` and recompile the program :)
 
