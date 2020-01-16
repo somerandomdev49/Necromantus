@@ -4,6 +4,8 @@
 
 Necromantus is a simple scripting language for java.
 
+# Looks like this, nothing special:
+
 ```javascript
 write("Hello, World!");
 write("Enter your name:");
@@ -74,6 +76,7 @@ if some unexpected behaviour appears, make an issue. (PLEASE!!!)
 | JS gen  | JavaScript code gen    |   Meh.      |   😎   |
 | Modules | Add module support     | In Progress |   🙂   |
 | Objects | Objects and stuff      | In Progress |   🤔   |
+|Arrays|Or lists?|Soon|🤔
 | REPL    | Interactive mode (`-i`)|   Finished  |   😎   |
 | Surprise| Won't tell you until its done| Soon | 😈 |
 |Parser|Reworking the Parser for above stuff|In Progress|😈|
