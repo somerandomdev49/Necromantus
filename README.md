@@ -70,15 +70,14 @@ if some unexpected behaviour appears, make an issue. (PLEASE!!!)
 
 | Feature | Description            |  Status     | Emoji  |
 |---------|------------------------|-------------|:------:|
-| If-Else | Add `else` and `elseif`|   Finished  |   🙃   |
 | Escaping| String escaping        |   Soon      |   😐   |
 | Types   | Add type support       |   Soon      |   🤔   |
 | JS gen  | JavaScript code gen    |   Meh.      |   😎   |
 | Modules | Add module support     | In Progress |   🙂   |
 | Objects | Objects and stuff      | In Progress |   🤔   |
-|Arrays|Or lists?|Soon|🤔
+|Arrays|Arrays|Finished|🤔
+|Array functions|Soon|🙂
 | REPL    | Interactive mode (`-i`)|   Finished  |   😎   |
-| Surprise| Won't tell you until its done| Soon | 😈 |
-|Parser|Reworking the Parser for above stuff|In Progress|😈|
 
+Everything that is `Finished` will be in the new update.
 
