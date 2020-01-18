@@ -76,7 +76,7 @@ if some unexpected behaviour appears, make an issue. (PLEASE!!!)
 | Modules | Add module support     | In Progress |   🙂   |
 | Objects | Objects and stuff      | In Progress |   🤔   |
 |Arrays|Arrays|Finished|🤔
-|Array functions|Soon|🙂
+|Array functions|Stuff like `sub`, `add` and so on|Soon|🙂
 | REPL    | Interactive mode (`-i`)|   Finished  |   😎   |
 
 Everything that is `Finished` will be in the new update.
