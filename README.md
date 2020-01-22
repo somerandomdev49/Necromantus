@@ -60,11 +60,11 @@ class Example {
 ```
 > Note: this ⬆⬆⬆ is default stuff, so you can use these functions straight away.
 
-> A little thing: to disable all messages, remove an `if` statement in `nextToken()` of `Tokenizer.java` and recompile the program :)
+> [a0.9] To disable strange messages, remove an `if` statement in `nextToken()` of `Tokenizer.java` and recompile the program 
 
-if some unexpected behaviour appears, make an issue. (PLEASE!!!)
-:smile:
-`:D`
+> [a0.9.1] Now it's ok :)
+
+## if some unexpected behaviour appears, make an issue.
 
 # Future stuff and TODO and some features
 
