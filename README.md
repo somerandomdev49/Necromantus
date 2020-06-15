@@ -65,7 +65,7 @@ class Example {
 > [a0.9.1] Now it's ok :)
 
 ## if some unexpected behaviour appears, make an issue.
-
+<!--
 # Future stuff and TODO and some features
 
 | Feature | Description            |  Status     | Emoji  |
@@ -79,5 +79,5 @@ class Example {
 |Array functions|Stuff like `sub`, `add` and so on|Soon|🙂
 | REPL    | Interactive mode (`-i`)|   Finished  |   😎   |
 
-Everything that is `Finished` will be in the new update.
+Everything that is `Finished` will be in the new update. -->
 
