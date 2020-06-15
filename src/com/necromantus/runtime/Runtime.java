@@ -1,5 +1,6 @@
 package com.necromantus.runtime;
 
+import com.necromantus.directors.StdLibDirector;
 import com.necromantus.lang.NMNativeFunc;
 import com.necromantus.lang.Scope;
 import com.necromantus.parser.Node;
@@ -70,28 +71,7 @@ public class Runtime {
         Scope scope = new Scope(null);
         Walker walker = new Walker(scope);
 
-        walker.putNativeFunc(new NMNativeFunc("write",  (ArrayList<Object> args) -> {for(Object arg:args){System.out.print(arg);}System.out.print("\n");return null;}));
-        walker.putNativeFunc(new NMNativeFunc("writes",  (ArrayList<Object> args) -> {for(Object arg:args){System.out.print(arg);}return null;}));
-
-        walker.putNativeFunc(new NMNativeFunc("read",   (ArrayList<Object> args) -> new Scanner(System.in).nextLine()));
-
-        walker.putNativeFunc(new NMNativeFunc("run",  (ArrayList<Object> args) -> {
-            try {
-                new Runtime(debug, silent, (String)args.get(0), t.tokenInfos).run();
-            } catch(Exception e) {
-                System.err.println("Syntax error!");
-            }
-            return null;
-        }));
-        walker.putNativeFunc(new NMNativeFunc("stof",  (ArrayList<Object> args) -> {
-            try {
-                return Float.parseFloat((String)args.get(0));
-            } catch(Exception e) {
-                System.err.println("Unable to convert from string to float!");
-            }
-            return null;
-        }));
-        walker.putNativeFunc(new NMNativeFunc("toString",  (ArrayList<Object> args) -> args.get(0).toString()));
+        new StdLibDirector(t).fill(walker);
 
         for (Node statement : ((RootNode) src).children)
             walker.walk(statement);

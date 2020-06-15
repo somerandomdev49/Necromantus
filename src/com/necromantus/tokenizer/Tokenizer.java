@@ -30,17 +30,24 @@ public class Tokenizer {
     }
 
     public Token nextToken() {
-        if(index==-1)
-            System.out.println(str.trim().replace("\n", "").replace("\t", "").replace("\r", ""));
-        else
-            System.out.println(tokenEatingHistory.get(index));
+//        if(index==-1)
+//            System.out.println(str.trim().replace("\n", "").replace("\t", "").replace("\r", ""));
+//        else
+//            System.out.println(tokenEatingHistory.get(index));
         return tokens.get(++index);
+    }
+
+    private void trim() {
+        while(Character.isSpaceChar(str.charAt(0))) {
+            if(str.charAt(0) == '\n') lineIndex++;
+            str = str.substring(1);
+        }
     }
 
     public void tokenize() throws ParserException {
         outer:
         while(!str.isEmpty()) {
-            str = str.trim();
+            trim();
             str = str.replace("\t", "");
             str = str.replace("\n", "");
             str = str.replace("\r", "");
@@ -50,7 +57,7 @@ public class Tokenizer {
                     firstCharIndex = str.indexOf(m.group(0).charAt(0));
                     str = str.replaceFirst(Pattern.quote(m.group(0)), "");
                     tokenEatingHistory.add(str);
-                    tokens.add(new Token(ti.id, m.group(0)));
+                    tokens.add(new Token(ti.id, m.group(0), lineIndex));
                     continue outer;
                 }
             }

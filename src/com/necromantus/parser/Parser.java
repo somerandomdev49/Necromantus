@@ -38,11 +38,11 @@ public final class Parser {
     private Node parseAtom() throws ParserException {
         Token tok = tokenizer.nextToken();
         if (tok.id == 0 && !reserved.contains(tok.value)) {
-            return new Node(NodeType.VALUE, NodeType.ValueNodeType.VAR, tok.value);
+            return new Node(NodeType.VALUE, NodeType.ValueNodeType.VAR, tok.value, tok.line);
         } else if (tok.id == 1) {
-            return new Node(NodeType.VALUE, NodeType.ValueNodeType.NUMBER, tok.value);
+            return new Node(NodeType.VALUE, NodeType.ValueNodeType.NUMBER, tok.value, tok.line);
         } else if (tok.id == TokenIdManager.getIdByDesc("STRING")) {
-            return new Node(NodeType.VALUE, NodeType.ValueNodeType.STRING, tok.value.substring(1, tok.value.length() - 1));
+            return new Node(NodeType.VALUE, NodeType.ValueNodeType.STRING, tok.value.substring(1, tok.value.length() - 1), tok.line);
         } else
             throw new ParserException("Expected number, string or name");
     }
@@ -50,7 +50,7 @@ public final class Parser {
     private Node parseVar() throws ParserException {
         Token tok = tokenizer.nextToken();
         if (tok.id == 0 && !reserved.contains(tok.value))
-            return new Node(NodeType.VALUE, NodeType.ValueNodeType.VAR, tok.value);
+            return new Node(NodeType.VALUE, NodeType.ValueNodeType.VAR, tok.value, tok.line);
         else
             throw new ParserException("Expected name");
     }
@@ -81,7 +81,7 @@ public final class Parser {
 
     private IfNode parseIf() throws ParserException {
         Node expression = parseExpr();
-        BlockNode block = parseBlock();
+        BlockNode block = parseBlock(expression.line);
         Token elseIfQM = tokenizer.seekToken();
         IfNode elseIf = null;
         Node elseNode = null;
@@ -90,16 +90,15 @@ public final class Parser {
             elseIf = parseIf();
         }
         if(elseIfQM.id == 0 && elseIfQM.value.equals("else")) {
-            tokenizer.nextToken();
-            elseNode = parseBlock();
+            elseNode = parseBlock(tokenizer.nextToken().line);
         }
-        return new IfNode(expression, block, elseIf, elseNode);
+        return new IfNode(expression, block, elseIf, elseNode, expression.line);
     }
 
     private Node parseLoop() throws ParserException {
         Node expression = parseExpr();
-        BlockNode block = parseBlock();
-        return new Node(NodeType.LOOP, null, "LOOP", expression, block);
+        BlockNode block = parseBlock(expression.line);
+        return new Node(NodeType.LOOP, null, "LOOP", expression, block, expression.line);
     }
 
 
@@ -113,13 +112,13 @@ public final class Parser {
      * @return Argument List Node.
      * @throws ParserException When incorrect syntax.
      */
-    private Node parseFuncArgs() throws ParserException {
-        ListNode n = new ListNode(NodeType.ARG_LIST, null, "ARG_LIST");
+    private Node parseFuncArgs(int line) throws ParserException {
+        ListNode n = new ListNode(NodeType.ARG_LIST, null, "ARG_LIST", line);
         Token ob = tokenizer.nextToken();
         if (ob.id == TokenIdManager.getIdByDesc("(")) {
             Token v = tokenizer.nextToken();
             if (v.id == 0) {
-                n.add(new ListNode(NodeType.VALUE, NodeType.ValueNodeType.VAR, v.value));
+                n.add(new ListNode(NodeType.VALUE, NodeType.ValueNodeType.VAR, v.value, line));
                 Token comma = tokenizer.seekToken();
                 while (comma.id == TokenIdManager.getIdByDesc(",")) {
                     tokenizer.nextToken();
@@ -147,17 +146,17 @@ public final class Parser {
      */
     private Node parseFuncCall() throws ParserException {
         Node callName = parseVar();
-        return parseFuncCallWithName((String)callName.value);
+        return parseFuncCallWithName((String)callName.value, callName.line);
     }
     /**
-     * Parse call of a function. (does not parse call keyword)
+     * Parse call of a function.
      * @return Function Call Node.
      * @throws ParserException when there is incorrect syntax.
      */
-    private Node parseFuncCallWithName(String name) throws ParserException {
-        Node n = new Node(NodeType.ACTION, NodeType.ActionNodeType.FUNC_CALL, "FUNC_CALL");
-        Node callArgs = parseFuncCallArgs();
-        n.add(false, new Node(NodeType.VALUE, NodeType.ValueNodeType.VAR, name));
+    private Node parseFuncCallWithName(String name, int line) throws ParserException {
+        Node n = new Node(NodeType.ACTION, NodeType.ActionNodeType.FUNC_CALL, "FUNC_CALL", line);
+        Node callArgs = parseFuncCallArgs(line);
+        n.add(false, new Node(NodeType.VALUE, NodeType.ValueNodeType.VAR, name, line));
         n.add(true, callArgs);
         return n;
     }
@@ -169,8 +168,8 @@ public final class Parser {
      * @return Arguments node.
      * @throws ParserException when there is incorrect syntax.
      */
-    private Node parseFuncCallArgs() throws ParserException {
-        ListNode n = new ListNode(NodeType.ARG_CALL_LIST, null, "ARG_CALL_LIST");
+    private Node parseFuncCallArgs(int line) throws ParserException {
+        ListNode n = new ListNode(NodeType.ARG_CALL_LIST, null, "ARG_CALL_LIST", line);
         Token ob = tokenizer.nextToken();
         if (ob.id == TokenIdManager.getIdByDesc("(")) {
             Token v = tokenizer.seekToken();
@@ -178,7 +177,7 @@ public final class Parser {
             if (v.id == TokenIdManager.getIdByDesc(")")) {
                 tokenizer.nextToken();
             } else {
-                ListNode ln = new ListNode(NodeType.VALUE, NodeType.ValueNodeType.FUNC_CALL_EXPR, "FUNC_CALL_EXPR");
+                ListNode ln = new ListNode(NodeType.VALUE, NodeType.ValueNodeType.FUNC_CALL_EXPR, "FUNC_CALL_EXPR", line);
                 ln.add(false, parseExpr());
                 n.add(ln);
                 Token comma = tokenizer.seekToken();
@@ -203,11 +202,11 @@ public final class Parser {
      * @return Function Node
      * @throws ParserException when there is incorrect syntax.
      */
-    private Node parseFunc() throws ParserException {
-        Node n = new Node(NodeType.FUNC, null, "FUNC");
-        Node args = parseFuncArgs();
+    private Node parseFunc(int line) throws ParserException {
+        Node n = new Node(NodeType.FUNC, null, "FUNC", line);
+        Node args = parseFuncArgs(line);
         n.add(false, args);
-        n.add(true, parseBlock());
+        n.add(true, parseBlock(line));
         return n;
     }
 
@@ -223,7 +222,7 @@ public final class Parser {
         Token operatorToken = tokenizer.seekToken();
         while (operatorToken.id == TokenIdManager.getIdByDesc("|") || operatorToken.id == TokenIdManager.getIdByDesc("&")) {
             tokenizer.nextToken(); // skip * or /
-            n = new Node(NodeType.ACTION, NodeType.ActionNodeType.OPERATOR, operatorToken.value, n, parseExpressionOrAtom());
+            n = new Node(NodeType.ACTION, NodeType.ActionNodeType.OPERATOR, operatorToken.value, n, parseExpressionOrAtom(), operatorToken.line);
             operatorToken = tokenizer.seekToken();
         }
         return n;
@@ -235,7 +234,7 @@ public final class Parser {
         Token operatorToken = tokenizer.seekToken();
         while (operatorToken.id == 0 && operatorToken.value.equals("is") || operatorToken.id == 0 && operatorToken.value.equals("not")) {
             tokenizer.nextToken(); // skip * or /
-            n = new Node(NodeType.ACTION, NodeType.ActionNodeType.OPERATOR, operatorToken.value, n, parseLogical());
+            n = new Node(NodeType.ACTION, NodeType.ActionNodeType.OPERATOR, operatorToken.value, n, parseLogical(), operatorToken.line);
             operatorToken = tokenizer.seekToken();
         }
         return n;
@@ -247,7 +246,7 @@ public final class Parser {
         Token operatorToken = tokenizer.seekToken();
         while (operatorToken.id == TokenIdManager.getIdByDesc(">") || operatorToken.id == TokenIdManager.getIdByDesc("<")) {
             tokenizer.nextToken(); // skip * or /
-            n = new Node(NodeType.ACTION, NodeType.ActionNodeType.OPERATOR, operatorToken.value, n, parseEquality());
+            n = new Node(NodeType.ACTION, NodeType.ActionNodeType.OPERATOR, operatorToken.value, n, parseEquality(), operatorToken.line);
             operatorToken = tokenizer.seekToken();
         }
         return n;
@@ -259,7 +258,7 @@ public final class Parser {
         Token operatorToken = tokenizer.seekToken();
         while (operatorToken.id == TokenIdManager.getIdByDesc("*") || operatorToken.id == TokenIdManager.getIdByDesc("/")) {
             tokenizer.nextToken(); // skip * or /
-            n = new Node(NodeType.ACTION, NodeType.ActionNodeType.OPERATOR, operatorToken.value, n, parseComparison());
+            n = new Node(NodeType.ACTION, NodeType.ActionNodeType.OPERATOR, operatorToken.value, n, parseComparison(), operatorToken.line);
             operatorToken = tokenizer.seekToken();
         }
         return n;
@@ -270,7 +269,7 @@ public final class Parser {
         Token addTok = tokenizer.seekToken();
         while (addTok.id == TokenIdManager.getIdByDesc("+") || addTok.id == TokenIdManager.getIdByDesc("-")) {
             tokenizer.nextToken();
-            n = new Node(NodeType.ACTION, NodeType.ActionNodeType.OPERATOR, addTok.value, n, parseMul());
+            n = new Node(NodeType.ACTION, NodeType.ActionNodeType.OPERATOR, addTok.value, n, parseMul(), addTok.line);
             addTok = tokenizer.seekToken();
         }
         return n;
@@ -309,12 +308,12 @@ public final class Parser {
             Node val = parseExpr();
             Token semicolon = tokenizer.nextToken();
             if (semicolon.id == TokenIdManager.getIdByDesc(";")) {
-                return new Node(NodeType.STATEMENT, thing, "STATEMENT", name, val);
+                return new Node(NodeType.STATEMENT, thing, "STATEMENT", name, val, name.line);
             } else {
                 throw new ParserException("Expected ';'");
             }
         } else if (eqOperator.id == TokenIdManager.getIdByDesc("(")) {
-            Node n = parseFuncCallWithName((String)name.value);
+            Node n = parseFuncCallWithName((String)name.value, name.line);
             Token semicolon = tokenizer.nextToken();
             if(semicolon.id == TokenIdManager.getIdByDesc(";"))
                 return n;
@@ -329,8 +328,8 @@ public final class Parser {
 //
 //    }
 
-    private BlockNode parseBlock() throws ParserException {
-        BlockNode n = new BlockNode(NodeType.BLOCK, null, "BLOCK");
+    private BlockNode parseBlock(int line) throws ParserException {
+        BlockNode n = new BlockNode(NodeType.BLOCK, null, "BLOCK", line);
         Token opening = tokenizer.nextToken();
         if (opening.id == TokenIdManager.getIdByDesc("{")) {
             while (tokenizer.seekToken().id != TokenIdManager.getIdByDesc("}")) {
@@ -349,8 +348,8 @@ public final class Parser {
     private Node parseExpr() throws ParserException {
         Token kwQM = tokenizer.seekToken();
         if (kwQM.id == 0 && kwQM.value.equals("func")) {
-            tokenizer.nextToken();
-            return parseFunc();
+            Token t = tokenizer.nextToken();
+            return parseFunc(t.line);
         } else if (kwQM.id == 0 && kwQM.value.equals("if")) {
             tokenizer.nextToken();
             return parseIf();
@@ -365,11 +364,14 @@ public final class Parser {
                     return parseFuncCall();
                 } else {
                     Node expr = parseAdd();
-                    return new Node(NodeType.EXPRESSION, null, "EXPRESSION", expr, null);
+                    return new Node(NodeType.EXPRESSION, null, "EXPRESSION", expr, null, ob.line);
                 }
             } else {
-                tokenizer.nextToken();
-                return new Node(NodeType.EXPRESSION, null, "EXPRESSION", new Node(NodeType.VALUE, NodeType.ValueNodeType.STRING, kwQM.value.substring(1, kwQM.value.length() - 1)), null);
+                Token t = tokenizer.nextToken();
+                return new Node(NodeType.EXPRESSION, null, "EXPRESSION",
+                        new Node(
+                                NodeType.VALUE, NodeType.ValueNodeType.STRING,
+                                kwQM.value.substring(1, kwQM.value.length() - 1), t.line), null, t.line);
             }
         }
     }

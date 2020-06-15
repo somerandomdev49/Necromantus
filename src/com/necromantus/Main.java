@@ -63,7 +63,7 @@ class Main {
                 for (String a : "+ - * / ( ) = ; , { } [ ] == > < <= >= != & |".split(" "))
                     tokenInfos.add(new TokenInfo(Pattern.compile("^(" + Pattern.quote(a) + ")"), TokenIdManager.getId("" + a)));
                 new Runtime(debug, silent, new String(content), tokenInfos).run();
-                System.out.println("Success");
+                // System.out.println("Success");
             } catch (ParserException e) {
                 System.err.println(e.getMessage());
                 e.printStackTrace();

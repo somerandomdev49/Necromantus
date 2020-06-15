@@ -1,9 +1,23 @@
 write("Hello, World!");
-write("Enter your name:");
+let names = newList();
+let running = true;
+while running {
+    write("Enter your name: ('.q' to quit) ");
+    let name = read();
+    if name is ".q" { running = false; }
+    else { listAdd(names, name); }
+}
+
+let i = 0;
+while i < (listSize(names)) {
+    write(i, ": ", listGet(names, i));
+    i = i + 1;
+}
+
 let weird = func (x, y) {
 	out = (x + y) * (x - y);
 };
-let name = read();
+let name = listGet(names, 0);
 write("Hello, ", name);
 write("two plus two is ", 2 + 2);
 if name is "Admin" {

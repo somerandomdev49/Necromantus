@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class BlockNode extends Node {
     public ArrayList<Node> children = new ArrayList<>();
-    public BlockNode(NodeType nodeType, Object nodeType2, Object value) {
-        super(nodeType, nodeType2, value);
+    public BlockNode(NodeType nodeType, Object nodeType2, Object value, int line) {
+        super(nodeType, nodeType2, value, line);
 
     }
 
